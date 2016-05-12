@@ -71,17 +71,17 @@ void loop()
     delay(300);
     
     // Convert the data to 10 bits
-    float xAccl = ((data[1] * 256.0) + (data[0] & 0xC0)) / 64;
+    float xAccl = ((data[1] * 256) + (data[0] & 0xC0)) / 64;
     if (xAccl > 511)
     {
         xAccl -= 1024;
     }
-    float yAccl = ((data[3] * 256.0) + (data[2] & 0xC0)) / 64;
+    float yAccl = ((data[3] * 256) + (data[2] & 0xC0)) / 64;
     if (yAccl > 511)
     {
         yAccl -= 1024;
     }
-    float zAccl = ((data[5] * 256.0) + (data[4] & 0xC0)) / 64;
+    float zAccl = ((data[5] * 256) + (data[4] & 0xC0)) / 64;
     if (zAccl > 511)
     {
         zAccl -= 1024;
@@ -91,5 +91,6 @@ void loop()
     Particle.publish("Acceleration in X-Axis :", String(xAccl));
     Particle.publish("Acceleration in Y-Axis :", String(yAccl));
     Particle.publish("Acceleration in Z-Axis :", String(zAccl));
+    delay(1000);
 }
 
